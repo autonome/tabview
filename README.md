@@ -3,6 +3,8 @@ tabview
 
 web-ified version of firefox's panorama UI core
 
+Demo: http://autonome.github.com/tabview/tabview.html
+
 Stuff:
 * double-click, or click-and-drag to create new box
 * move boxes around to see snapping guides
