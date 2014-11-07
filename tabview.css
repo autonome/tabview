@@ -1,0 +1,254 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+html {
+  overflow: hidden;
+  /* image-rendering: -moz-crisp-edges; */
+}
+
+body {
+  padding: 0px;
+  margin: 0 auto;
+  background-color: transparent;  
+  font: message-box;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+}
+
+#content {
+  overflow: -moz-hidden-unscrollable;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999999;
+  /*
+  background: -moz-linear-gradient(#C4C4C4,#9E9E9E);
+  */
+}
+
+/* Items
+----------------------------------*/
+
+.item {
+  position: absolute;
+  /*cursor: pointer;*/
+  background-color: rgb(240,240,240);
+  border-radius: 0.4em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.titlebar {
+  /*position: absolute;*/
+  cursor: move;
+  font-size: 12px;
+  height: 18px;
+}
+
+.title-shield {
+  /*
+  position: absolute;
+  left: 0;
+  top: 0;
+  */
+  width: -moz-available;
+  height: 100%;
+  z-index: 10;
+  margin-top: 3px;
+  -moz-margin-end: 0;
+  margin-bottom: 0;
+  -moz-margin-start: 3px;
+  padding: 1px;
+  cursor: text;
+}
+
+.title-container {
+  /* We want the title container to leave out width, position of the .close
+     button and space between input and .close button. */
+  width: calc(100% - 16px - 6px - 6px);
+}
+
+.title-container:hover input.name,
+.title-container input.name:focus {
+  border: 1px solid #ddd;
+}
+
+.title-container:hover input.name-locked {
+  border: 1px solid transparent !important;
+  cursor: default;
+}
+
+.title-container:hover input.name::-moz-placeholder {
+  color: #CCC;
+}
+
+input.name {
+  text-overflow: ellipsis;
+  width: -moz-available;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #999;
+  margin-top: 3px;
+  -moz-margin-end: 0;
+  margin-bottom: 0;
+  -moz-margin-start: 3px;
+  padding: 1px;
+}
+
+input.name:focus {
+  text-overflow: clip;
+  color: #555;
+}
+
+input.name::-moz-placeholder {
+  font-style: italic !important;
+  color: transparent;
+  background-image: url(images/edit-light.png);
+  background-repeat: no-repeat;
+  -moz-padding-start: 20px;
+}
+
+.item.activeItem {
+  box-shadow: rgba(0,0,0,0.8) 2px 2px 8px;
+}
+
+.item .close {
+  top: 6px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  background-image: -moz-image-rect(url(images/close.png), 0, 16, 16, 0);
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+}
+
+.item .close:hover {
+  background-image: -moz-image-rect(url(images/close.png), 0, 32, 16, 16);
+}
+.item .close:active {
+  background-image: -moz-image-rect(url(images/close.png), 0, 48, 16, 32);
+}
+
+.phantom {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dragRegion {
+  background: rgba(235, 235, 235, 0.4);
+}
+
+.content {
+  width: -moz-available;
+  /* TODO */
+  height: 100%;
+}
+
+.content textarea {
+}
+
+/* Trenches
+----------------------------------*/
+
+.guideTrench, 
+.visibleTrench, 
+.activeVisibleTrench {
+  position: absolute;
+}
+
+.guideTrench {
+  z-index: -101;
+  opacity: 0.9;
+  border: 1px dashed  rgba(0,0,0,.12);
+  border-bottom: none;
+  -moz-border-end: none;
+  box-shadow: 1px 1px 0 rgba(255,255,255,.15);
+}
+
+.visibleTrench {
+  opacity: 0.05;
+  z-index: -103;
+}
+
+.activeVisibleTrench {
+  opacity: 0;
+  z-index: -102;
+}
+
+.activeVisibleTrench.activeTrench {
+  opacity: 0.45;
+}
+
+.visibleTrench.border, 
+.activeVisibleTrench.border {
+  background-color: red;
+}
+
+.visibleTrench.guide, 
+.activeVisibleTrench.guide {
+  background-color: blue;
+}
+
+/* Other
+----------------------------------*/
+
+.transparentBorder {
+  border: 1px solid transparent !important;
+}
+
+.active {
+  box-shadow: 5px 5px 3px rgba(0,0,0,.5);
+}
+
+.acceptsDrop {
+  box-shadow: 2px 2px 7px -1px rgba(0,0,0,.6);
+}
+
+/* Resizable
+----------------------------------*/
+.resizer {
+  position: absolute;
+  background-image: url(images/resizer.png);
+  width: 16px;
+  height: 16px;
+  bottom: 0px;
+  right: 0px;
+  opacity: .2;
+}
+
+.iq-resizable-handle {
+  font-size: 0.1px;
+}
+
+.iq-resizable-se {
+  cursor: se-resize;
+  width: 12px;
+  height: 12px;
+  padding-right: 3px;
+  padding-bottom: 3px;
+  right: -2px;
+  bottom: -2px;
+}
+
+.iq-resizable-handle {
+  position: absolute;
+  z-index: 99999;
+  display: block;
+}
+
+.iq-resizable-disabled .iq-resizable-handle, 
+.iq-resizable-autohide .iq-resizable-handle {
+  display: none;
+}
+

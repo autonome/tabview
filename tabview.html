@@ -1,0 +1,49 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>tabview</title>
+  <link rel="stylesheet" href="tabview.css" type="text/css"/>
+  <link rel="stylesheet" href="tabview/tabview.css" type="text/css"/>
+</head>
+
+<body transparent="true" id="content">
+  <h2>web-ified version of firefox's panorama feature</h2>
+
+<pre style="margin-top: 300px;">
+  Stuff:
+  * double-click, or click-and-drag to create new box
+  * move boxes around to see snapping guides
+  * drop boxes on top of other boxes and watch them shift to adjust
+  * only works in Firefox right now
+
+  Incomplete stuff, but shows the direction:
+  * double-click in a box to edit it's contents
+  * try making it's content HTML, even an iframe
+
+  TODO
+  * fix in other browsers
+  * fix the box contents editing stuff
+  * fix iframe border and resizing
+  * pushstate for new url on load, saves to firebase
+  * load from firebase based on url
+  * persist size, position, title and contents
+  * confirm delete
+  * require persona login to edit
+  * fix selection bleed
+</pre>
+
+<script type="text/javascript;version=1.8" src="utils.js"></script>
+<script type="text/javascript;version=1.8" src="iq.js"></script>
+<script type="text/javascript;version=1.8" src="items.js"></script>
+<script type="text/javascript;version=1.8" src="drag.js"></script>
+<script type="text/javascript;version=1.8" src="trench.js"></script>
+<script type="text/javascript;version=1.8" src="ui.js"></script>
+<script>
+  UI.init('#content');
+</script>
+</body>
+</html>
